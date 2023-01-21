@@ -17,8 +17,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var path_file = "http://localhost:5000/uploads/"
-
 type handleTrip struct {
 	TripRepository repositories.TripRepository
 }
@@ -36,7 +34,7 @@ func (h *handleTrip) FindTrip(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode((err.Error()))
 	}
 	for i, p := range trip {
-		trip[i].Image = path_file + p.Image
+		trip[i].Image = p.Image
 	}
 	w.WriteHeader(http.StatusOK)
 	response := dto.SuccessResult{Code: http.StatusOK, Data: trip}
@@ -55,7 +53,7 @@ func (h *handleTrip) GetTrip(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(err.Error())
 		return
 	}
-	trip.Image = path_file + trip.Image
+	trip.Image = trip.Image
 	w.WriteHeader(http.StatusOK)
 	response := dto.SuccessResult{Code: http.StatusOK, Data: trip}
 	json.NewEncoder(w).Encode(response)
