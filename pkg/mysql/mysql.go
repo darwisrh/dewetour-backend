@@ -11,7 +11,7 @@ var DB *gorm.DB
 
 func DatabaseInit() {
 	var err error
-	dsn := "root:efxTCoWmZWiagGQ0Z6LJ@tcp(containers-us-west-101.railway.app:7426)/railway?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:V65YOKD4PkKa470sFEqm@tcp(containers-us-west-72.railway.app:7804)/railway?charset=utf8mb4&parseTime=True&loc=Local"
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
